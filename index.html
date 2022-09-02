@@ -1,112 +1,199 @@
-<!DOCTPYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset = "UTF-8">
-  <title>Libras - Iniciativa</title>
-<link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Roboto">
-<style>
-* {
-  margin: 0;
-  font-size: 1.1em;
-  font-family: 'Roboto';
-}
+	<head>
+		<title>Saber Libras</title>
+		<link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Ubuntu" >
+		<meta name = "viewport" content="width=device-width, initial-scale=1.0" >
+		<style>
+			* {
+				margin: 0;
+				font-family: 'Ubuntu';
+			}
 
-#main {
-  display: flex;
-  flex-direction: column;
-}
+			#main {
+				display: flex;
+				flex-direction: column;
+			}
 
-#sidebar {
-  display: flex;
-  background: #012;
-  color: #fff8;
-  padding: 5px;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  height: 300px;
-}
+			#icons {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 50vh;
+			}
 
-#content {
-  display: flex;
-  flex-direction: column;
-}
+			#guide {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 1.5em;
+				margin: 10px;
+			}
 
-#content > .notes {
-  border: 2px solid black;
-  margin: 5px;
-  box-shadow: 5px 5px 0px black;
-  font-size: 0.7em;
-}
+			#video-view iframe {
+				width: 100vw;
+				height: 40vh;
+				border: 0px;
+				border-radius: 10px;
+				background-color: antiquewhite;
+			}
 
-#content > .apresentation {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
-}
+			.icon {
+				margin: 10px;
+				width: 128px;
+				height: 128px;
+				border-radius: 128px;
+				border: 2px solid black;
+				transition: transform 300ms;
+				cursor: pointer;
+			}
 
-#content > .apresentation > .block {
-  margin: 5px;
-  border: 0.5px dashed gray;
-  border-radius: 10px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  flex-direction: column;
-  font-size: 0.7em;
-}
+			.icon:hover {
+				transform: scale(1.1);
+			}
 
-.customLink {
-  font-weight: bold;
-  text-decoration: none;
-  color: #000;
-  border-bottom: 3px solid #000;
-  padding: 0px;
-  margin: 5px;
-  width: max-content;
-}
+			.videoPanel {
+				display: flex;
+				position: fixed;
+				width: 100vw;
+				height: 100vh;
+				background-color: #0009;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
 
-details {
-  margin: 10px;
-}
+			.videoPanel iframe {
+				border: 0px;
+				width: 50%;
+				height: 50%;
+				margin: 10px;
+				box-shadow: 9px 9px #f33446;
+				animation: displaying ease 300ms;
+			}
 
-details summary {
-  list-style-type: '▶️';
-  margin: 5px;
-  background: #f1f1f1;
-}
+			.customButton {
+				background-color: aqua;
+				color: #000;
+				margin: 10px;
+				padding: 10px;
+				border: 0px;
+				font-size: 1.2em;
+				box-shadow: 9px 9px 0px black;
+				cursor: pointer;
+			}
 
-iframe {
-  width: 100%;
-  border: none;
-}
+			.customButton:hover {
+				transform: scale(1.1);
+				box-shadow: 5px 5px 0px black;
+			}
 
-</style>
-</head>
-<body>
-<detail id = "main">
-  <div id = "sidebar">
-    <p>Uma rápida noção sobre <span style = "color: #000;background: #fff;padding: 2px;display: inline-flex;width: max-content;justify-content: center;align-items: center;border-top-right-radius: 5px;border-bottom-right-radius: 5px;">libras<img src = "https://yt3.ggpht.com/ytc/AMLnZu_Zh36OCZY-P9NtFnn-GwN9hwt5UWitrAaE0dA6VQ=s900-c-k-c0x00ffffff-no-rj" width = "32" height = "32"></span></p>
-    <small style = "font-size: 15px;">Programado e desenhado por Alisson</small>
-  </div>
-  <br >
-  <div>
-    <details>
-      <summary>Metodologia 1: Exemplos práticos</summary>
-      <details>
-        <summary>O Alfabeto em libras</summary>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/fYaXJXf60gU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </details>
-      <details><summary>Conheça os objetos em libras</summary>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/xBTIphE7cPw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </details>
-      <details><summary></summary></details>
-    </details>
-  </div>
-</div>
-</body>
+			@keyframes displaying{
+				from {
+					transform: translate(0, 100px);
+				}
+
+				50% {
+					transform: translate(0, -100px);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id = "main">
+			<div id = "icons"></div>
+			<div id = "guide"></div>
+			<div style = "display: flex;flex-direction: column;width: 90vw;justify-content: center;margin:10px;font-size:2.5em;">
+				<h2>Uma introdução a Libras</h2>
+					<p>A Língua Brasileira de Sinais é a língua de sinais ou gestual usada por surdos dos centros urbanos brasileiros e legalmente reconhecida como meio de comunicação e expressão.</p>
+					<p>Assim como as diversas línguas naturais e humanas existentes, ela é composta por níveis linguísticos como: fonologia, morfologia, sintaxe e semântica.</p>
+					<h2>Aprenda vendo</h2>
+					<img src = "https://s1.static.brasilescola.uol.com.br/img/2019/09/alfabeto.png" width = "300" height = "300">
+					<p>O intuito do site é simplificar um pouco o seu aprendizado sobre essa lígua que tão poucos brasileiros sabem de fato.</p>
+					<iframe src = "https://www.youtube.com/embed/qO85uTyroSg" style = "width: 30%;height:30%;border:0;"></iframe>
+					<p>Com isso, mostramos alguns exemplos e curiosidades da Libras e alguns outros recursos caso queira se aprofundar mais no assunto.</p>
+				<h2>Mais...</h2>
+					<p>Explore o <a href = "https://www.ines.gov.br/dicionario-de-libras/">dicionário online de libras</a></p>
+					<p>Se você é produtor de conteúdo áudio-visual, pode pedir por uma tradução em Libras do seu conteúdo em <a href = "https://www.libras-se.com/">Libras.se</a></p>
+			</div>
+		</div>
+		<script type = "text/javascript">
+			var Project = {}
+			
+			function createIcon(agentName)
+			{
+
+			}
+
+			function createPanel(videoURL)
+			{
+				const panel = document.createElement('div')
+				panel.className = "videoPanel"
+
+				const iframe = document.createElement('iframe')
+				iframe.src = videoURL
+
+				panel.appendChild(iframe)
+
+				const closeLink = document.createElement('button')
+				closeLink.className = "customButton"
+				closeLink.innerText = "Fechar sessão"
+				closeLink.addEventListener('click', function(e){
+					panel.parentNode.removeChild(panel)
+				})
+
+				panel.appendChild(closeLink)
+				
+				document.querySelector('#main').appendChild(panel)
+			}
+
+			function main()
+			{
+				const DEFAULT_TEXT_GUIDE = "Passe o mouse sobre a foto de um dos guias ou arraste para cima e veja um pouco mais do que tenho a te dizer sobre Libras"
+
+				Project.agents = {
+					'Mike': {
+						image: 'https://static.vecteezy.com/system/resources/thumbnails/001/234/725/small/side-portrait-of-a-black-man.jpg',
+						video: 'https://www.youtube.com/embed/fYaXJXf60gU',
+						label: 'Você conhece as letras do alfabeto em Libras? Clique e veja um exemplo prático rápido!'
+					},
+					'Meatly': {
+						image: 'https://st2.depositphotos.com/36058524/47660/v/380/depositphotos_476605598-stock-illustration-handsome-black-realistic-man-short.jpg?forcejpeg=true',
+						video: 'https://www.youtube.com/embed/xBTIphE7cPw',
+						label: 'Já se perguntou como dizer o nome dos objetos à sua volta em Libras? Tenho um vídeo que vai tirar sua dúvida...'
+					},
+					'Moabe': {
+						image: 'https://i.pinimg.com/originals/2d/46/7b/2d467b35c894de75f2c2e99a1662ef30.png',
+						video: 'https://www.youtube.com/embed/VC16GV0ItjY',
+						label: 'Bom dia, boa tarde e boa noite! Você conhece alguma dessas saudações em Libras? Clique e conheça!'
+					}
+				}
+
+				for (let i in Project.agents)
+				{
+					const image = document.createElement('img')
+					image.src = Project.agents[i].image
+					image.className = "icon"
+					image.addEventListener('click', function(e){
+						createPanel(Project.agents[i].video)
+						//document.querySelector('iframe').src = Project.agents[i].video
+					})
+					image.addEventListener('mouseover', function(e){
+						document.querySelector('#guide').innerText = Project.agents[i].label
+					})
+					image.addEventListener('mouseleave', function(e){
+						document.querySelector('#guide').innerText = DEFAULT_TEXT_GUIDE
+					})
+
+					document.querySelector('#icons').appendChild(image)
+				}
+			
+				document.querySelector('#guide').innerText = DEFAULT_TEXT_GUIDE
+			}
+
+			window.onload = main()
+		</script>
+		<small>-->>> Esse site foi programado e escrito pelo aluno Alisson de jesus, UNINASSAU</small>
+	</body>
 </html>
